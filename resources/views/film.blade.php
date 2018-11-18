@@ -13,7 +13,12 @@
 
                 <p><strong>Cena: {{$film->getPrice()}} zł</strong></p>
 
-                <a href="{{route('addFilmToBasket', ['id' => $film->getId()])}}" class="btn btn-success">Dodaj do koszyka</a>
+                @guest
+                    <a href="{{ route('login') }}" class="btn btn-outline-info">Zaloguj, aby dodać do koszyka</a>
+                @else
+                    <a href="{{route('addFilmToBasket', ['id' => $film->getId()])}}" class="btn btn-success">Dodaj do koszyka</a>
+                @endguest
+
             </div>
         </div>
     </div>
